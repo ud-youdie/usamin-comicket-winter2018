@@ -1,0 +1,9 @@
+#view,#touchView{
+    max-width: 960px;
+    margin: 0 auto;
+}
+#view img,
+#touchView img
+{
+    width: 100%;
+}
