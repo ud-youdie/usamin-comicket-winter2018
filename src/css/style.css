@@ -1,4 +1,5 @@
-#view,#touchView{
+#parentView
+{
     max-width: 720px;
     margin: 0 auto;
 }
@@ -6,4 +7,37 @@
 #touchView img
 {
     width: 100%;
+}
+
+.ripple
+{
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple .rp-effect 
+{
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.4;/*波紋の濃さ*/
+    transform: scale(0);
+    background: rgb(255,230,245);/*波紋色*/
+    animation: ripple 1200ms;
+    pointer-events: none; 
+}
+
+@-webkit-keyframes ripple 
+{
+    to {
+        opacity: 0;
+        transform: scale(2.0);
+    }
+}
+
+@keyframes ripple 
+{
+    to {
+        opacity: 0;
+        transform: scale(2.0);
+    }
 }

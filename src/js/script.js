@@ -70,11 +70,13 @@ $(function(){
 
     var defitv = setInterval(defaultLoop, 30);
 
-    let isTouchAnimating = false;
+    //let isTouchAnimating = false;
     let touchFrame= 0;
+    let touchLoop;
     var $touchRange = $("#touchRange").hide();
-    $("#view").on("click",()=>{
-        if(isTouchAnimating) return;
+    $("#parentView").on("click",()=>{
+        //if(isTouchAnimating) return;
+        clearInterval(touchLoop);
         danceFrame = 0;
         $danceRange.val(danceFrame).trigger("input");
 
@@ -82,13 +84,13 @@ $(function(){
         $("#view").hide();
         $("#touchView").show();
         clearInterval(defitv);
-        let touchLoop = setInterval(()=>{
-            isTouchAnimating = true;
+        touchLoop = setInterval(()=>{
+            //isTouchAnimating = true;
             $touchRange.val(touchFrame).trigger("input");
             touchFrame++;
             if(touchFrameCount < touchFrame){
                 clearInterval(touchLoop);
-                isTouchAnimating = false;
+                //isTouchAnimating = false;
                 defitv = setInterval(defaultLoop, 30);
                 $("#view").show();
                 $("#touchView").hide();
@@ -117,3 +119,38 @@ $(function(){
     });
 
 });
+
+$(function() {
+    var ripple, ripples, RippleEffect,loc, cover, coversize, style, x, y, i, num;
+    
+    ripples = document.querySelectorAll('.ripple');
+  
+    RippleEffect = function(e) {
+        ripple = this;//クリックされたボタンを取得
+        cover = document.createElement('span');//span作る
+        coversize = ripple.offsetWidth;//要素の幅を取得
+        loc = ripple.getBoundingClientRect();//絶対座標の取得
+        x = e.pageX - loc.left - window.pageXOffset - (coversize / 2);
+        y = e.pageY - loc.top - window.pageYOffset - (coversize / 2);
+        pos = 'top:' + y + 'px; left:' + x + 'px; height:' + coversize + 'px; width:' + coversize + 'px;';
+    
+        //spanを追加
+        ripple.appendChild(cover);
+        cover.setAttribute('style', pos);
+        cover.setAttribute('class', 'rp-effect');//クラス名追加
+        
+        //しばらくしたらspanを削除
+        setTimeout(()=>{
+            var list = document.getElementsByClassName( "rp-effect" ) ;
+            for(var i =list.length-1;i>=0; i--){//末尾から順にすべて削除
+                list[i].parentNode.removeChild(list[i]);
+            }
+        }, 2000)
+    };
+
+    for (i = 0, num = ripples.length; i < num; i++) {
+      ripple = ripples[i];
+      ripple.addEventListener('mousedown', RippleEffect);
+    }
+  });
+  
