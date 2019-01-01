@@ -1,7 +1,11 @@
 $(function(){
 
     $("<div id='waiting'>" +
-        "<p>loading... <span id='count'></span></p>" +
+        "<p>" +
+          "読み込み中… <br>" +
+          "※最大2～3分ほどかかる場合があります<br>" +
+          "<span id='count'></span>" +
+        "</p>" +
     "</div>").css({
         "position": "fixed",
         "top": 0,
