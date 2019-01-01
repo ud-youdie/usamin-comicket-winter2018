@@ -60,7 +60,7 @@ $(function(){
         }
     }, 10);
 
-    var $danceRange = $("#danceRange").hide();
+    var $danceRange = $("#danceRange");
     let danceFrame = 0;
     const defaultLoop = ()=>{
         $danceRange.val(danceFrame).trigger("input");
@@ -73,7 +73,7 @@ $(function(){
     //let isTouchAnimating = false;
     let touchFrame= 0;
     let touchLoop;
-    var $touchRange = $("#touchRange").hide();
+    var $touchRange = $("#touchRange");
     $("#parentView").on("click",()=>{
         //if(isTouchAnimating) return;
         clearInterval(touchLoop);
