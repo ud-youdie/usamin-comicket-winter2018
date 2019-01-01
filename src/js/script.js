@@ -2,9 +2,9 @@ $(function(){
 
     $("<div id='waiting'>" +
         "<p>" +
-          "読み込み中… <br>" +
-          "※最大2～3分ほどかかる場合があります<br>" +
-          "<span id='count'></span>" +
+          "Loading… <span id='count'></span><br><br>" +
+          "<strong>※最初の読み込み時にいっぱいダウンロードするので5分以上かかる場合があります</strong><br>" +
+          "<strong>約180MBくらいあるので通信容量に気を付けてください</strong><br>" +
         "</p>" +
     "</div>").css({
         "position": "fixed",
